@@ -1,0 +1,1 @@
+{"mappings":"AAGIA,MAAM,6CAA6CC,MAAKC,GAAQC,QAAQC,IAAIF","sources":["src/js/fetchCountries.js"],"sourcesContent":["\n\nexport default function fetchCountries(name) {\n    fetch(`https://restcountries.com/v3.1/name/spain`).then(resp => console.log(resp));\n}\n\n"],"names":["fetch","then","resp","console","log"],"version":3,"file":"index.12a19f46.js.map"}
