@@ -20,13 +20,21 @@ function onSearchCountry(evt) {
     fetchCountries(named).then(data => {
         console.log(data);
         if(data.length > 10) {
+            conteinerEl.innerHTML = '';
+            listEl.innerHTML = '';
             Notify.info('Too many matches found. Please enter a more specific name.');
         } else 
-        if (1 < data.length && data.length < 10) {
+        if(1 < data.length && data.length < 10) {
+            conteinerEl.innerHTML = '';
             createMurkup(data); 
+        } else 
+        if (data.length === 1) {
+            listEl.innerHTML = '';
+            createMurkupOneCountry(data);
         }
 
-    });
+    })
+    .catch(err => Notify.failure('Oops, there is no country with that name'));
 }
 
 
@@ -43,4 +51,23 @@ function createMurkup(arr) {
 `).join('');
 
 listEl.innerHTML = murkup;
+}
+
+function createMurkupOneCountry(arrey) {
+    const { capital } = arrey;
+    const { population } = arrey;
+    const { languages } = arrey;
+    const { name: { common } } = arrey;
+    const { flags: { svg: iconFlag } } = arrey;
+
+    console.log(capital);
+
+
+ const murkupCountry = `<img src="${iconFlag}" class="icon" alt="${common}">
+    <h2 class="title">${common}</h2>
+    <h3 class="text"><span>Capital:</span>${capital}</h3>
+    <h3 class="text"><span>Population:</span>${population}</h3>
+    <h3 class="text"><span>Languages:</span>${languages}</h3>`;
+
+    conteinerEl.innerHTML = murkupCountry;
 }
