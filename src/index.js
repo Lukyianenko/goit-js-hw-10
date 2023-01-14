@@ -8,8 +8,6 @@ const inputEl = document.querySelector('#search-box');
 const listEl = document.querySelector('.country-list');
 const conteinerEl = document.querySelector('.country-info');
 
-console.log(listEl);
-
 let named = '';
 
 inputEl.addEventListener('input', debounce(onSearchCountry, DEBOUNCE_DELAY));
@@ -30,14 +28,12 @@ function onSearchCountry(evt) {
         } else 
         if (data.length === 1) {
             listEl.innerHTML = '';
-            createMurkupOneCountry(data);
+            createMurkupOneCountry(data[0]);
         }
 
     })
     .catch(err => Notify.failure('Oops, there is no country with that name'));
 }
-
-
 
 function createMurkup(arr) {
     const murkup = arr.map((
@@ -59,10 +55,7 @@ function createMurkupOneCountry(arrey) {
     const { languages } = arrey;
     const { name: { common } } = arrey;
     const { flags: { svg: iconFlag } } = arrey;
-
-    console.log(capital);
-
-
+    
  const murkupCountry = `<img src="${iconFlag}" class="icon" alt="${common}">
     <h2 class="title">${common}</h2>
     <h3 class="text"><span>Capital:</span>${capital}</h3>
