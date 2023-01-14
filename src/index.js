@@ -64,7 +64,7 @@ function createMurkupOneCountry(arrey) {
     <h2 class="title">${common}</h2>
     <h3 class="text"><span>Capital:</span>${capital}</h3>
     <h3 class="text"><span>Population:</span>${population}</h3>
-    <h3 class="text"><span>Languages:</span>${languages}</h3>`;
+    <h3 class="text"><span>Languages:</span>${languages.join(',')}</h3>`;
 
     conteinerEl.innerHTML = murkupCountry;
 }
