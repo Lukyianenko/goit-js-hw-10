@@ -32,7 +32,11 @@ function onSearchCountry(evt) {
         }
 
     })
-    .catch(err => Notify.failure('Oops, there is no country with that name'));
+    .catch(err => {
+        conteinerEl.innerHTML = '';
+        listEl.innerHTML = '';
+        Notify.failure('Oops, there is no country with that name')
+    });
 }
 
 function createMurkup(arr) {
@@ -60,7 +64,7 @@ function createMurkupOneCountry(arrey) {
     <h2 class="title">${common}</h2>
     <h3 class="text"><span>Capital:</span>${capital}</h3>
     <h3 class="text"><span>Population:</span>${population}</h3>
-    <h3 class="text"><span>Languages:</span>${languages.join(',')}</h3>`;
+    <h3 class="text"><span>Languages:</span>${languages}</h3>`;
 
     conteinerEl.innerHTML = murkupCountry;
 }
