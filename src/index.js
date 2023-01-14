@@ -59,13 +59,13 @@ function createMurkupOneCountry(arrey) {
     const { languages } = arrey;
     const { name: { common } } = arrey;
     const { flags: { svg: iconFlag } } = arrey;
-    const language = languages.join(',');
+    const language = Object.values(languages).join(',');
     console.log(language);
  const murkupCountry = `<img src="${iconFlag}" class="icon" alt="${common}">
     <h2 class="title">${common}</h2>
     <h3 class="text"><span>Capital:</span>${capital}</h3>
     <h3 class="text"><span>Population:</span>${population}</h3>
-    <h3 class="text"><span>Languages:</span>${languages}</h3>`;
+    <h3 class="text"><span>Languages:</span>${language}</h3>`;
 
     conteinerEl.innerHTML = murkupCountry;
 }
