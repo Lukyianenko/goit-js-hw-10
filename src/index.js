@@ -14,7 +14,9 @@ inputEl.addEventListener('input', debounce(onSearchCountry, DEBOUNCE_DELAY));
 
 function onSearchCountry(evt) {
     named = evt.target.value.trim();
-
+    if (!named) {
+        return
+    }
     fetchCountries(named).then(data => {
         console.log(data);
         if(data.length > 10) {
